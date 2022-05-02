@@ -9,7 +9,6 @@ set hlsearch
 set ignorecase " 検索で大文字小文字を区別しない
 set smartcase " 検索で大文字を含めたときは大文字小文字を区別する
 
-
 set ruler
 
 set number " 行数の表示
@@ -19,6 +18,9 @@ set number " 行数の表示
 set wildmenu
 set showcmd
 
+packadd! matchit " htmlの開始/終了タグに%でジャンプ
+
+
 " -----------------------------
 "  Tabの設定
 set expandtab    "タブ文字ではなくtabstopで指定した数のスペースを挿入
@@ -26,6 +28,7 @@ set tabstop=2    "タブ文字に対する見た目の空白数
 set shiftwidth=2 "インデントの見た目の空白数
 set smarttab     "行頭で<Tab>を入力するとインデントを挿入する
 set autoindent   "改行時に前と同じ数だけ自動でインデント挿入
+set smartindent " 改行時にインデントを保つ
 
 set clipboard=unnamed
 
@@ -46,8 +49,8 @@ set whichwrap=lh "行の頭、末尾でh、lを押したときに行移動をす
 nmap <Esc><Esc> :nohl<CR>
 
 " o で挿入モードに入らないようにする
-nnoremap o o<ESC>
-nnoremap O O<ESC>
+" nnoremap o o<ESC>
+" nnoremap O O<ESC>
 
 " カラースキーム選択
 colorscheme desert " デフォルトで入っていテーマ
@@ -106,6 +109,9 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'alvan/vim-closetag' " htmlの閉じタグを自動補正
+Plug 'tpope/vim-surround' " カギカッコ、クォートの変更補助
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'markdown', 'yaml', 'html'] }
 call plug#end()
 " -----------------------------
 
@@ -119,3 +125,9 @@ call plug#end()
 let g:lsp_diagnostics_echo_cursor = 1 
 
 " -----------------------------
+"
+
+packloadall " vim-prettierの設定?
+
+colorscheme tender
+
